@@ -1,19 +1,23 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
 function User({
-  image,
-  name,
-  email,
-  lastLogin,
+  image, name, email, lastLogin,
 }) {
   return (
     <div>
-      <img src={image} alt={name} />
-      <h1>{name}</h1>
-      <h2>{email}</h2>
-      <h3>{lastLogin}</h3>
+      <Card style={{ width: '18rem' }}>
+        <Card.Img variant="top" src={image} alt={name} />
+        <Card.Body>
+          <Card.Title>{name}</Card.Title>
+          <Card.Text>{email}</Card.Text>
+          <Card.Text>{lastLogin}</Card.Text>
+          <Button variant="primary">Go somewhere</Button>
+        </Card.Body>
+      </Card>
     </div>
   );
 }
