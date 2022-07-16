@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 function User({
@@ -14,8 +13,7 @@ function User({
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text>{email}</Card.Text>
-          <Card.Text>{lastLogin}</Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          <Card.Text>Last Login: {lastLogin}</Card.Text>
         </Card.Body>
       </Card>
     </div>
