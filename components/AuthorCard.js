@@ -3,8 +3,15 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
+import { deleteAuthorBooks } from '../api/mergedData';
 
-function AuthorCard({ authorObj }) {
+function AuthorCard({ authorObj, onUpdate }) {
+  const deleteAuthorAndTheirBooks = () => {
+    if (window.confirm(`Are you sure you want to delete ${authorObj.first_name} ${authorObj.last_name}?`)) {
+      deleteAuthorBooks(authorObj.firebaseKey).then(() => onUpdate());
+    }
+  };
+
   return (
     <div>
       <Card style={{ width: '18rem' }}>
@@ -19,7 +26,7 @@ function AuthorCard({ authorObj }) {
           <Link href={`/book/edit/${authorObj.firebaseKey}`} passHref>
             <Button variant="info">EDIT</Button>
           </Link>
-          <Button variant="danger" className="m-2">
+          <Button variant="danger" onClick={deleteAuthorAndTheirBooks} className="m-2">
             DELETE
           </Button>
         </Card.Body>
@@ -36,6 +43,7 @@ AuthorCard.propTypes = {
     firebaseKey: PropTypes.string,
     favorite: PropTypes.bool,
   }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
 
 export default AuthorCard;

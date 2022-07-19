@@ -9,8 +9,12 @@ export default function Authors() {
   const [authors, setAuthors] = useState([]);
   const { user } = useAuth();
 
-  useEffect(() => {
+  const getAllAuthors = () => {
     getAuthors(user.uid).then(setAuthors);
+  };
+
+  useEffect(() => {
+    getAllAuthors();
   }, [user.uid]); // user.uid goes in the dependency b/c a different users can land on this page with routing without going through the login and whatnot, so whenever uid changes, I am telling this page to change to that user's authors.
 
   return (
@@ -20,7 +24,7 @@ export default function Authors() {
       </Link>
       <div className="d-flex flex-wrap">
         {authors.map((author) => (
-          <AuthorCard key={author.firebaseKey} authorObj={author} />
+          <AuthorCard key={author.firebaseKey} authorObj={author} onUpdate={getAllAuthors} />
         ))}
       </div>
     </div>
