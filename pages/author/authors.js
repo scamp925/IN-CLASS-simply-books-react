@@ -11,7 +11,7 @@ export default function Authors() {
 
   useEffect(() => {
     getAuthors(user.uid).then(setAuthors);
-  }, [user]);
+  }, [user.uid]); // user.uid goes in the dependency b/c a different users can land on this page with routing without going through the login and whatnot, so whenever uid changes, I am telling this page to change to that user's authors.
 
   return (
     <div className="text-center my-4">
