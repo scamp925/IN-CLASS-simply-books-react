@@ -37,7 +37,7 @@ function BookCard({ bookObj, onUpdate }) {
 }
 
 BookCard.propTypes = {
-  bookObj: PropTypes.shape({
+  bookObj: PropTypes.shape({ // Since we will need all the values of the object, it's just easier to do .shape and defining all the keys
     image: PropTypes.string,
     title: PropTypes.string,
     sale: PropTypes.bool,
