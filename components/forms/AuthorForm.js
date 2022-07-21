@@ -4,9 +4,8 @@ import { useRouter } from 'next/router';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
-import { updateBook } from '../../api/bookData';
 import { useAuth } from '../../utils/context/authContext';
-import { createAuthor } from '../../api/authorData';
+import { createAuthor, updateAuthor } from '../../api/authorData';
 
 const initialState = {
   first_name: '',
@@ -35,7 +34,7 @@ function AuthorForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateBook(formInput)
+      updateAuthor(formInput)
         .then(() => router.push(`/author/${obj.firebaseKey}`));
     } else {
       const body = { ...formInput, uid: user.uid };
