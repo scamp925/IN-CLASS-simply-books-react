@@ -1,10 +1,15 @@
 @import 'bootstrap/dist/css/bootstrap.css';
 
 body {
-  background-color: black;
+  background-color: #124559;
 }
 
 .profile-img {
   border-radius: 50%;
   width: 30px;
+}
+
+.sign-out-btn {
+  float: right;
+  margin-top: 10px;
 }

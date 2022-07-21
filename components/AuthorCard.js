@@ -14,7 +14,7 @@ function AuthorCard({ authorObj, onUpdate }) {
 
   return (
     <div>
-      <Card style={{ width: '18rem' }}>
+      <Card style={{ width: '18rem', margin: '10px' }}>
         <Card.Body>
           <Card.Title>{authorObj.first_name} {authorObj.last_name}</Card.Title>
           <Card.Text>{authorObj.email}</Card.Text>
